@@ -1,0 +1,30 @@
+.copy_right_footer {
+position:fixed;
+color: gray;
+text-align: center;
+background-color:honeydew;
+bottom: 0;
+width: 100%;
+}
+
+canvas {
+border-radius:10px;
+box-shadow: 5px 5px 5px lightslategray;
+border:2px solid white;
+margin-top:130px;
+}
+
+body {
+background-size: cover;
+}
+
+.heading {
+margin-top: 0px;
+width: 100%;
+font-size: 21px;
+}
+
+#object_name {
+font-size: 13px;
+color: black;
+}
