@@ -1,20 +1,26 @@
 video= " ";
 objects= [];
 status="";
+
+
 function preload() {
-video= createVideo('video.mp4');
-video.hide();
+
 }
 
 function setup () {
-canvas=createCanvas(480, 380);
-canvas.center();
+    canvas=createCanvas(470,380);
+    canvas.center(); 
+    video=createCapture(VIDEO);
+    video.size(470,380);                      
+    video.hide();                        
+    objectDetector= ml5.objectDetector('cocossd',modelLoaded);
+    document.getElementById("status").innerHTML="Status:Detecting Object";
 }
 
 function draw() {
-image(video,0,0, 480,380);
+image(video,0,0, 470,380);
 if(status != "") {
-objectDetector.detect(video, gotResult);
+objectDetector.detect(img, gotResult);
 
 for(i=0; i < objects.length; i++) {
 document.getElementById("status").innerHTML="Status: Objects Detected";
@@ -33,14 +39,13 @@ rect(objects[i].x, objects[i].y, objects[i].width, objects[i].height);
 function start() {
 objectDetector= ml5.objectDetector('cocossd', modelLoaded);
 document.getElementById("status").innerHTML= "status: detecting objects";
+document.getElementById("input_text").value;
 }
 
 function modelLoaded() {
 console.log("Model Loaded!");
 status:true;
-video.loop();
-video.speed(1);
-video.volume(0);
+
 }
 
 function gotResult(error, results) {
